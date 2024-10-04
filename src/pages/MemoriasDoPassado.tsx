@@ -1,28 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
-import { Image, SafeAreaView, StyleSheet, Text, TextInput, TouchableHighlight } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
+import {
+  Image,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableHighlight,
+} from "react-native";
 
-import * as ImagePicker from 'expo-image-picker';
+import * as ImagePicker from "expo-image-picker";
 
 export default function MemoriasDoPassado() {
-
-  const [name, setName] = useState('')
-  const [image, setImage] = useState('')
-
+  const [name, setName] = useState("");
+  const [image, setImage] = useState("");
 
   async function getImageLibrary() {
-    const imageInLibrary = await ImagePicker.launchImageLibraryAsync()
+    const imageInLibrary = await ImagePicker.launchImageLibraryAsync();
 
     if (imageInLibrary?.assets) {
-      setImage(imageInLibrary.assets[0].uri)
+      setImage(imageInLibrary.assets[0].uri);
     }
   }
 
   async function getImageCamera() {
-    const imageInCamera = await ImagePicker.launchCameraAsync()
+    const imageInCamera = await ImagePicker.launchCameraAsync();
 
     if (imageInCamera?.assets) {
-      setImage(imageInCamera.assets[0].uri)
+      setImage(imageInCamera.assets[0].uri);
     }
   }
 
@@ -30,15 +35,16 @@ export default function MemoriasDoPassado() {
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
 
-      {
-        image && <Image style={styles.image} source={{ uri: image }} width={150} height={150} />
-      }
+      {image && (
+        <Image
+          style={styles.image}
+          source={{ uri: image }}
+          width={150}
+          height={150}
+        />
+      )}
 
-      <TextInput
-        style={styles.input}
-        value={name}
-        onChangeText={setName}
-      />
+      <TextInput style={styles.input} value={name} onChangeText={setName} />
 
       <TouchableHighlight
         underlayColor="#e596dd"
@@ -48,7 +54,6 @@ export default function MemoriasDoPassado() {
         <Text>Escolher imagem</Text>
       </TouchableHighlight>
 
-
       <TouchableHighlight
         underlayColor="#e596dd"
         style={styles.imageButton}
@@ -56,7 +61,6 @@ export default function MemoriasDoPassado() {
       >
         <Text>Abrir camera</Text>
       </TouchableHighlight>
-
     </SafeAreaView>
   );
 }
@@ -64,27 +68,27 @@ export default function MemoriasDoPassado() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    padding: 20
+    backgroundColor: "#fff",
+    padding: 20,
   },
   input: {
     borderWidth: 1,
-    width: '100%',
-    borderColor: '#f216dc',
+    width: "100%",
+    borderColor: "#f216dc",
     height: 32,
-    padding: 5
+    padding: 5,
   },
   imageButton: {
-    backgroundColor: '#f216dc',
+    backgroundColor: "#f216dc",
     height: 32,
-    width: '100%',
+    width: "100%",
     borderRadius: 16,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginVertical: 10
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: 10,
   },
   image: {
-    alignSelf: 'center',
-    marginVertical: 10
-  }
+    alignSelf: "center",
+    marginVertical: 10,
+  },
 });
