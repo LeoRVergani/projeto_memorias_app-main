@@ -40,6 +40,9 @@ export default function MemoriasDoPresente() {
             style={styles.camera}
             facing={typeCamera}
             ref={cameraRef}
+            onBarcodeScanned={(value) => {
+              console.log(value.data)
+            }}
           >
             <View style={styles.footerCameraContainer}>
 

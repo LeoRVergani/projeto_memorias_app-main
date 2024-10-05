@@ -1,10 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { Image, SafeAreaView, StyleSheet, Text, TextInput, TouchableHighlight } from 'react-native';
-
 import axios from 'axios'
-
 import * as ImagePicker from 'expo-image-picker';
+import React from 'react';
 
 export default function MemoriasDoPassado() {
 
